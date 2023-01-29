@@ -1,20 +1,9 @@
-import { Model, DataTypes, Optional, UUID } from 'sequelize';
+import { Model, DataTypes } from 'sequelize';
 import { DEFAULT_CHIP_COUNT } from '../const';
 import db from '../db';
+import { IUser, IUserReqBody } from './user.model.types';
 
-export interface IUser {
-  id: string;
-  userName: string;
-  password: string;
-  chipCount: number;
-  token?: string;
-}
-
-export interface IUserInput extends Optional<IUser, 'id' | 'chipCount'> {}
-
-export interface IUserOutput extends IUser {}
-
-class User extends Model<IUser, IUserInput> {
+class User extends Model<IUser, IUserReqBody> {
   public id!: string;
   public userName!: string;
   public password!: string;
